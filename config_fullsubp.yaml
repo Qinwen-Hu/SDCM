@@ -1,0 +1,27 @@
+data:
+  data_path: None # Dataset path for unprocessed data
+  target_data_path: './split_data' # Dataset path for processed data
+  length_seconds: 10 # Segment length in seconds
+  target_sr: 48000 # Target sampling rate
+  train_split: 0.95 # Training dataset ratio
+
+feature:
+  n_win: 1536
+  n_fft: 1536
+  n_hop: 384
+  n_comp: 256
+
+train:
+  device: 'cuda:0'
+  device_ids: [0,1,2,3]
+  length_in_seconds: 4 # in seconds
+  epochs: 200
+  batch_size: 8
+  num_workers: 1
+  lr: 1e-3
+  lr_reduce_ratio: 0.5
+  lr_reduce_patience: 15
+
+log:
+  name: 'fullsubp_scm'
+  ckpt_dir: './ckpt/fullsubp_scm'
